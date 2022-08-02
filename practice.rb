@@ -2138,7 +2138,7 @@ holiday_hash = {
 #     @name
 #   end
 
-#   def name=(new_name)
+#   def name= (new_name)
 #     @name = new_name
 #   end
 
@@ -2157,28 +2157,227 @@ holiday_hash = {
 # Call our setter method #name= to change his name to "Yeezy"
 # Call our getter method again and see that kanye's name is now "Yeezy".
 
-class Person
+# class Person
 
-  def initialize(first_name, last_name)
-    @first_name = first_name
-    @last_name = last_name
-  end
+#   def initialize(first_name, last_name)
+#     @first_name = first_name
+#     @last_name = last_name
+#   end
 
-  def name=(full_name)
-    first_name, last_name = full_name.split
-    @first_name = first_name
-    @last_name = last_name
-  end
+#   def name=(full_name)
+#     first_name, last_name = full_name.split
+#     @first_name = first_name
+#     @last_name = last_name
+#   end
 
-  def name
-    "#{@first_name} #{@last_name}".strip
-  end
+#   def name
+#     "#{@first_name} #{@last_name}".strip
+#   end
 
-end
+# end
 
-Faruk = Person.new("Md Faruk", "Ahmed")
+# Faruk = Person.new("Md Faruk", "Ahmed")
 
-puts Faruk.name
+# puts Faruk.name
+
+# mantra = ["Don't", "Repeat", "Yourself"]
+
+# mantra.map do |word|
+#   puts word[0]
+# end
+
+# OUTPUT: 
+# D
+# R
+# Y
+
+# class Person
+
+#   attr_reader :name
+#   attr_writer :name
+
+# end
+
+# class Person
+
+#   def name=(name)
+#     @name = name
+#   end
+
+#   def name
+#     @name
+#   end
+# end
+
+# jay_z = Person.new
+# jay_z.name = "Shawn Carter"
+# puts jay_z.name
+
+# class Person
+#   attr_writer :name
+#   attr_reader :name
+# end
+
+# ABOVE CODE CAN BE WRITTEN AS BELOW
+# class Person
+#   attr_accessor :name
+# end
+
+# class Triangle
+#   def initialize(base, height)
+#     @base=base
+#     @height=height
+#   end
+
+#   def Area
+#     @base*@height/2
+#   end
+# end
+
+# test = Triangle.new(10,10)
+
+# puts test.Area
+
+# OUTPUT: 50
+
+# RUN RSPEC till the first failure
+# rspec --fail-fast
+
+
+# x = ["enlists", "google", "inlets", "banana"]
+
+# x = %w(enlists google inlets banana)
+
+# y = "listen"
+
+#   def match(array, word)
+#       array.select {|x| x.split("").sort == word.split("").sort}
+
+#   end
+
+# puts match(x, y)
+
+# class Dog
+#   def showing_self
+#     puts self
+#   end
+# end
+
+# fido = Dog.new
+# fido.showing_self
+
+# OUTPUT: #<Dog:0x0000558e3ab33828>
+
+# class Dog
+
+#   attr_accessor :name, :owner
+
+#   def initialize(name)
+#     @name = name
+#   end
+
+
+
+# end
+
+# def adopted(dog, owner_name)
+#   dog.owner = owner_name
+
+# end
+
+# fido = Dog.new("Fido")
+
+# fido.owner = "Sophie"
+
+# puts fido.owner
+
+# puts adopted(fido, "Sophie")
+
+# s = "This, well, is a sentence. This is too!! And so is this, I think? Woo... Just adding another sentence."
+
+# def sentence(s)
+#   s.end_with?(".")
+# end
+
+# def question(s)
+#   s.end_with?("?")
+# end
+
+# def exclamation(s)
+#   s.end_with?("!")
+# end
+
+# def count_sentences(s)
+#   s.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size
+# end
+
+# puts sentence(s)
+# puts question(s)
+# puts exclamation(s)
+# puts count_sentences(s)
+
+# OUTPUT: 
+# true
+# false
+# false
+# 5
+
+# class Album
+
+#   def release_date=(date)
+#     @release_date = date
+#   end
+
+#   def release_date
+#     @release_date
+#   end
+# end
+
+# album = Album.new
+# album.release_date = 1991
+# puts album.release_date
+
+# class Album
+#   @@album_count = 3
+
+#   def self.count
+#     @@album_count
+#   end
+# end
+
+# puts Album.count
+
+# class Album
+#   @@album_count = 0 
+
+#   def initialize
+#     @@album_count += 1
+#   end
+
+#   def self.count
+#     @@album_count
+#   end
+# end
+
+# rake console commands for ActiveRecord creation and modification
+# [22] pry(main)> hard = Genre.create(name: "Hard")
+# => #<Genre:0x0000564ce30d88c0 id: 3, name: "Hard">
+# [23] pry(main)> michael = Artist.create(name: "Michael")
+# => #<Artist:0x0000564ce2186020 id: 3, name: "Michael">
+# [24] pry(main)> haha = Song.create(name: "Haha")
+# => #<Song:0x0000564ce2f3d678
+#  id: 6,
+#  name: "Haha",
+#  artist_id: nil,
+#  genre_id: nil>
+#  [27] pry(main)> haha.artist = michael
+#  => #<Artist:0x0000564ce2186020 id: 3, name: "Michael">
+#  [28] pry(main)> haha.save
+#  => true
+#  [29] pry(main)> haha.genre = hard
+#  => #<Genre:0x0000564ce30d88c0 id: 3, name: "Hard">
+#  [30] pry(main)> haha.save
+#  => true
 
 
 

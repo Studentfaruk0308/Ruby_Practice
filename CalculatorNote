@@ -1,0 +1,186 @@
+# app/model/user.rb file
+# class User < ActiveRecord::Base
+# end
+
+# app/calculator.rb file
+# class Calculator
+#     def calculate(firstNumber, secondNumber, operator)
+#         case operator
+#         when '+'
+#             return Integer(firstNumber) + Integer(secondNumber)
+#         when'-'
+#             return Integer(firstNumber) - Integer(secondNumber)
+#         when'*'
+#             return Integer(firstNumber) * Integer(secondNumber)
+#         when'/'
+#             return Integer(firstNumber) / Integer(secondNumber)
+#         end
+#     end
+# end
+
+# app/cli.rb file
+# class CLI 
+#     def initialize
+#         continue = 'Y'
+#         puts "Welcome to my CLI application"  
+#         while continue == 'Y'
+#      puts "What would you like to do?"
+#      puts "1. Calculator"
+#      puts "2. User"
+
+#      input = gets.strip
+
+#      if input == '1'
+#         startCalculator
+#      else
+#         getUsers
+#     end
+#     puts "Do you want to continue (Y/N)?"
+#     continue = gets.strip
+#     end
+# end
+
+#     def startCalculator
+#         puts "Input first number"
+#         inputOne = gets.strip
+#         puts "Input second number"
+#         inputTwo = gets.strip
+#         puts "Input an operator (+,-,*,/)"
+#         operator = gets.strip
+      
+#         result = Calculator.new.calculate(inputOne, inputTwo, operator)
+
+#         puts result
+#     end
+
+#     def getUsers
+#         puts "What information do you like to know?"
+#         puts "1. Number of Users"
+#         puts "2. Search User by name"
+#         input = gets.strip
+
+#         if input == "1"
+#             puts User.count
+#         elsif input == "2"
+#             puts "Type a name"
+#             value = gets.strip
+#             puts User.find_by(name: value)
+#         end
+#     end
+    
+# end
+
+# bin/run file
+# #!/usr/bin/env ruby
+
+# require_relative '../config/environment'
+
+# CLI.new
+
+# config/database.yml file
+# default: &default
+#   adapter: sqlite3
+#   pool: 5
+#   timeout: 5000
+
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
+
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
+
+
+
+#RAKEFILE
+# require_relative 'config/environment.rb'
+# require "sinatra/activerecord/rake"
+
+# desc "starts console"
+# task :console do
+#   Pry.start
+# end
+
+#GEMFILE
+# source "https://rubygems.org"
+# gem "rails"
+# gem 'sqlite3', '~> 1.3.6'
+# gem 'activerecord', '~> 5.2.3', require: 'active_record'
+# gem 'sinatra-activerecord'
+# gem 'rspec'
+# gem 'pry'
+# gem 'rake'
+# gem 'database_cleaner'
+
+# Note: need to have database.yml file if 'sinatra-activerecord' is used in Gemfile.
+
+
+# config/environment.rb File
+# require 'bundler/setup'
+# Bundler.require
+
+# ActiveRecord::Base.establish_connection(
+#     :adapter => "sqlite3",
+#     :database => "db/development.sqlite3"
+# )
+
+# require_relative "../app/calculator"
+# require_relative "../app/model/user"
+# require_relative "../app/cli"
+
+===========
+# require 'bundler/setup'
+# Note: Bringing everything from the Gemfile.
+# require "sinatra/activerecord"
+# Bundler.require
+
+# Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
+
+# connection_details = YAML::load(File.open('config/database.yml'))
+# ActiveRecord::Base.establish_connection(connection_details)
+
+# Note: all the Classes path to be mentioned in the the "require_relative"
+===========
+
+# db/migrate/01_create_users.rb file
+# class CreateUsers < ActiveRecord::Migration[5.2]
+#     def change
+#         create_table :users do |t|
+#             t.string :name
+#         end
+#     end
+# end
+
+=============
+development.sqlite3 & test.sqlite3 are created during db:create command
+=============
+schema.rb crated during db:migrate command
+=============
+seeds.rb are hard coded data to populated in the database.
+=============
+
+# Gemfile
+# source "https://rubygems.org"
+
+# gem "pry"
+# gem "activerecord"
+# gem "sqlite3"
+# gem "rake"
+# gem "sinatra-activerecord"
+
+==========
+# Gemfile.lock is crated during bundle install 
+==========
+
+# Rakefile
+# require_relative 'config/environment'
+# require 'sinatra/activerecord/rake'
+
+# desc "Enter debugging mode"
+# task :console do
+#     Pry.start
+# end
+
+
+
